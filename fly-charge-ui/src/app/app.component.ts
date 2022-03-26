@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChargingStationsService } from './charging-stations.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,12 @@ export class AppComponent {
   numberSelected =0;
   
   numList = [1,2,3,4,5,6,7,8];
+  responseLocations: any;
 
+  constructor(
+    private chargingStationsService: ChargingStationsService,
+    
+  ) { }
 
   getNumberSelected(e: any){
 
@@ -23,7 +29,13 @@ export class AppComponent {
       if(this.numberSelected == 0){
           alert("Select number greater than 0")
       }else{
-
+ 
+          this.chargingStationsService.getChargingStationsLocation(this.numberSelected)
+          .subscribe( data => {
+                    
+            this.responseLocations = [];
+            this.responseLocations.push(data);
+           });         
       }
 
   }
