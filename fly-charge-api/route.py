@@ -1,5 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
+from WebLayer import WebWrapperClass as wwc
 import json
 
 
@@ -9,7 +10,7 @@ CORS(app)
 
 @app.route('/getChargingStations/<noOfChargingStations>', methods=['GET'])
 def getChargingStationsNeeded(noOfChargingStations):
-    return twc.getStatesInCountry(noOfChargingStations)
+    return wwc.getChargingStations(noOfChargingStations)
 
 
 if __name__ == '__main__':
