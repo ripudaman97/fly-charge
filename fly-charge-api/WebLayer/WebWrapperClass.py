@@ -264,6 +264,7 @@ def findCandidatesForChargingStations():
 def getPrimaryCandidates(noOfChargingStations):
     count = 0
     arrayCandidates = []
+    arrayCandidatesGPS = []
     dictCandidates = {}
     findCandidatesForChargingStations()
     for i in range(6):
@@ -274,11 +275,16 @@ def getPrimaryCandidates(noOfChargingStations):
 
     numberrand = random.sample(range(0, 23), noOfChargingStations)
     p=0
+
+    for arr in arrayCandidates:
+        arrgps = convertIndextoGPS(arr[0], arr[1])
+        arrayCandidatesGPS.append(arrgps)
+
     for i in numberrand:
-        dictCandidates[p] = arrayCandidates[i]
+        dictCandidates[p] = arrayCandidatesGPS[i]
         p=p+1
 
-    return  dictCandidates
+    return dictCandidates
 
 
 def getChargingStations(noOfChargingStations):
