@@ -10,7 +10,7 @@ CORS(app)
 
 @app.route('/getChargingStations/<noOfChargingStations>', methods=['GET'])
 def getChargingStationsNeeded(noOfChargingStations):
-    return wwc.getChargingStations(noOfChargingStations)
+    return wwc.getChargingStations(int(noOfChargingStations))
 
 
 if __name__ == '__main__':

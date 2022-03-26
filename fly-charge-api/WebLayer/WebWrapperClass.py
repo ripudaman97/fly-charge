@@ -1,4 +1,5 @@
-
+import random
+import json
 # candidate matrix initialisation
 
 candidateMatrix = [[0, 0, 0, 0, 0, 0, 0, 0, 0 ,0],
@@ -262,20 +263,29 @@ def findCandidatesForChargingStations():
 
 def getPrimaryCandidates(noOfChargingStations):
     count = 0
+    arrayCandidates = []
+    dictCandidates = {}
     findCandidatesForChargingStations()
     for i in range(6):
         for j in range(10):
 
             if (candidateMatrix[i][j]):
-                count = count + 1
-                print(i, j)
+                arrayCandidates.append([i,j])
+
+    numberrand = random.sample(range(0, 23), noOfChargingStations)
+    p=0
+    for i in numberrand:
+        dictCandidates[p] = arrayCandidates[i]
+        p=p+1
+
+    return  dictCandidates
 
 
-def getChargingStationsNeeded(noOfChargingStations):
-    getPrimaryCandidates(noOfChargingStations)
+def getChargingStations(noOfChargingStations):
+    dictPrimaryCandidates = getPrimaryCandidates(noOfChargingStations)
+    return json.dumps(dictPrimaryCandidates)
 
 
 
 
-
-#getChargingStationsNeeded()
+#getChargingStationsNeeded(4)
