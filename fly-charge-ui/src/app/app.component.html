@@ -58,6 +58,53 @@
     background-size:auto;
   }
 
+  .solution {
+
+    margin-top: 100px;
+    margin-left: 25%;
+    margin-right: 25%;
+
+  }
+
+  .latloncontainer {
+
+    margin: 15px;
+    border: solid 2px black;
+    padding: 15px;
+    height: 100px;
+  }
+
+  .latlontext {
+
+    font-weight: 600;
+    font-size: large;
+  }
+
+  .lat {
+
+    margin: 1%;
+    margin-top: 10px;
+    width: 40%;
+    height: 90%;
+    float: left;
+    font-weight: 800;
+    font-size: 70px;
+  }
+
+  .lon {
+
+    margin: 1%;
+    margin-top: 10px;
+    width: 40%;
+    height: 90%;
+    margin-left: 2%;
+    float:left;
+    text-align: center;
+    font-weight: 800;
+    font-size: 70px;
+
+  }
+
 </style>
 
 <!-- Toolbar -->
@@ -95,6 +142,33 @@
     </div>
    
 </div>
+</div>
+
+<div class="solution">
+
+    <div  *ngFor = "let item of responseLocations">
+        <div  class="latloncontainer" *ngFor = "let it of item">
+          <div class="latlontext">
+            <span>The GPS location is (Latitude, Longitude):</span>
+          </div>
+
+          <div class="latlon">
+
+            <div class="lat">
+                <span>{{it[0]}}</span>
+            </div>
+
+            <div class="lon">
+                <span>{{it[1]}}</span>
+                
+            </div>
+
+          </div>
+        </div>
+    </div>
+
+
+
 </div>
 
   

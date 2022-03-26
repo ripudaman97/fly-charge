@@ -10,8 +10,10 @@ export class AppComponent {
 
   numberSelected =0;
   
-  numList = [1,2,3,4,5,6,7,8];
+  numList = [1,2,3,4];
   responseLocations: any;
+  
+  
 
   constructor(
     private chargingStationsService: ChargingStationsService,
@@ -23,7 +25,7 @@ export class AppComponent {
     this.numberSelected = e.target.value;
     
   }
-
+  
   getNumerOfstations(){
 
       if(this.numberSelected == 0){
@@ -35,6 +37,7 @@ export class AppComponent {
                     
             this.responseLocations = [];
             this.responseLocations.push(data);
+            console.log(this.responseLocations);
            });         
       }
 

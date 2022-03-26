@@ -117,7 +117,8 @@ def convertIndextoGPS(latindex, lonindex):
 
     lat = 42.3 - ((((2*latindex + 1)/2)*5) / 111)
     lon = 83.1 - ((((2*lonindex + 1)/2)*5) / 85)
-
+    lat = round(lat, 2)
+    lon = round(lon, 2)
     arrindex = [lat, lon]
 
     return arrindex
@@ -265,7 +266,7 @@ def getPrimaryCandidates(noOfChargingStations):
     count = 0
     arrayCandidates = []
     arrayCandidatesGPS = []
-    dictCandidates = {}
+    dictCandidates = []
     findCandidatesForChargingStations()
     for i in range(6):
         for j in range(10):
@@ -281,7 +282,7 @@ def getPrimaryCandidates(noOfChargingStations):
         arrayCandidatesGPS.append(arrgps)
 
     for i in numberrand:
-        dictCandidates[p] = arrayCandidatesGPS[i]
+        dictCandidates.append(arrayCandidatesGPS[i])
         p=p+1
 
     return dictCandidates
