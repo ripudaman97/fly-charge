@@ -6,5 +6,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'fly-charge-ui';
+
+  numberSelected =0;
+  
+  numList = [1,2,3,4,5,6,7,8];
+
+
+  getNumberSelected(e: any){
+
+    this.numberSelected = e.target.value;
+    
+  }
+
+  getNumerOfstations(){
+
+      if(this.numberSelected == 0){
+          alert("Select number greater than 0")
+      }else{
+
+      }
+
+  }
+
 }
+
+
