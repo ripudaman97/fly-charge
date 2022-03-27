@@ -1,5 +1,6 @@
 import random
 import json
+import BusinessLayer.BusinessWrapperClass as bw
 # candidate matrix initialisation
 
 candidateMatrix = [[0, 0, 0, 0, 0, 0, 0, 0, 0 ,0],
@@ -267,25 +268,30 @@ def getPrimaryCandidates(noOfChargingStations):
     arrayCandidates = []
     arrayCandidatesGPS = []
     dictCandidates = []
+    dictCandidatesLBGA = []
+
+
     findCandidatesForChargingStations()
+
     for i in range(6):
         for j in range(10):
 
             if (candidateMatrix[i][j]):
                 arrayCandidates.append([i,j])
 
-    numberrand = random.sample(range(0, 23), noOfChargingStations)
-    p=0
+    numberrand = random.sample(range(0, 23), 2*noOfChargingStations)
 
-    for arr in arrayCandidates:
+    for i in numberrand:
+        dictCandidatesLBGA.append(arrayCandidates[i])
+
+    arrayCandidatesGA = bw.getOptimizedPositionsGA(dictCandidatesLBGA, noOfChargingStations)
+
+
+    for arr in arrayCandidatesGA:
         arrgps = convertIndextoGPS(arr[0], arr[1])
         arrayCandidatesGPS.append(arrgps)
 
-    for i in numberrand:
-        dictCandidates.append(arrayCandidatesGPS[i])
-        p=p+1
-
-    return dictCandidates
+    return arrayCandidatesGPS
 
 
 def getChargingStations(noOfChargingStations):
@@ -295,4 +301,4 @@ def getChargingStations(noOfChargingStations):
 
 
 
-#getChargingStationsNeeded(4)
+#print(getChargingStations(4))
